@@ -29,9 +29,17 @@ class Home extends StatelessWidget {
             Text(
               'Trending Books',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 color: Colors.red[900],
                 fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Best sellers of the week',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.red[900],
+                //fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 16), // Space below the title
@@ -43,14 +51,14 @@ class Home extends StatelessWidget {
                     title: 'Thilaka Ha Thilaka',
                     author: 'Minas Publishers',
                     imagePath: 'assets/Thilaka ha Thilaka-1000x1000.jpg',
-                    price: 'Rs500',
+                    price: 'Rs. 500',
                   ),
                   SizedBox(width: 16), // Space between books
                   Book(
-                    title: 'Another Book',
+                    title: 'Manika',
                     author: 'Author Name',
-                    imagePath: 'assets/sample.jpg',
-                    price: 'Rs750',
+                    imagePath: 'assets/kanatare kusuma.jpg',
+                    price: 'infinity',
                   ),
                   SizedBox(width: 16),
                   Book(
@@ -99,8 +107,9 @@ class Book extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.red[900],
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
@@ -132,7 +141,7 @@ class Book extends StatelessWidget {
                 Text(
                   price.toString(),
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 14,
                     color: Colors.black,
                   ),
                 ),
@@ -141,7 +150,12 @@ class Book extends StatelessWidget {
                     // Define button action
                     print('Add to cart button pressed!');
                   },
-                  child: Text('Add to cart'),
+                  child: Text(
+                    'Add to cart',
+                      style: TextStyle(
+                      fontSize: 14,
+                    )
+                  ),
                 ),
               ],
             )
