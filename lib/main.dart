@@ -11,104 +11,143 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie World'),
+        title: Text(
+          'Book World',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.red[900],
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Text(
-              'Hello World',
+      body: Container(
+        padding: EdgeInsets.only(left: 20, top: 20), // Adds padding
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Trending Books',
               style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+                fontSize: 24,
                 color: Colors.red[900],
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          Container(
-            height: 200,
-            width: 200,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage("https://picsum.photos/id/237/200/300"),
-                fit: BoxFit.cover,
+            SizedBox(height: 16), // Space below the title
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Enables horizontal scrolling
+              child: Row(
+                children: [
+                  Book(
+                    title: 'Thilaka Ha Thilaka',
+                    author: 'Minas Publishers',
+                    imagePath: 'assets/Thilaka ha Thilaka-1000x1000.jpg',
+                    price: 'Rs500',
+                  ),
+                  SizedBox(width: 16), // Space between books
+                  Book(
+                    title: 'Another Book',
+                    author: 'Author Name',
+                    imagePath: 'assets/sample.jpg',
+                    price: 'Rs750',
+                  ),
+                  SizedBox(width: 16),
+                  Book(
+                    title: 'Third Book',
+                    author: 'Another Author',
+                    imagePath: 'assets/sample2.jpg',
+                    price: 'Rs1000',
+                  ),
+                ],
               ),
             ),
-          ),
-          Book(),
-          Book()
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
 class Book extends StatelessWidget {
+  final String title; // Book title
+  final String author; // Author name
+  final String imagePath; // Image path
+  final String price; // Price
+
+  Book({
+    required this.title,
+    required this.author,
+    required this.imagePath,
+    required this.price,
+  });
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center, // Centers the content vertically
-      crossAxisAlignment: CrossAxisAlignment.center, // Aligns content horizontally
-      children: [
-        SizedBox(height: 10),
-        Center(
-          child: Column(
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.lightBlue[50], // Background color for the widget
+        borderRadius: BorderRadius.circular(8), // Rounded corners
+      ),
+      width: 200,
+      padding: EdgeInsets.only(top: 8, bottom: 8), // Padding for top and bottom
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // Centers the content vertically
+        crossAxisAlignment: CrossAxisAlignment.center, // Aligns content horizontally
+        children: [
+          Column(
             children: [
               Text(
-                'Book',
+                title,
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                   color: Colors.red[900],
                 ),
               ),
               Text(
-                'Author',
+                author,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Colors.red[900],
                 ),
               ),
             ],
           ),
-        ),
-        SizedBox(height: 10), // Adds space between sections
-        Container(
-          height: 200,
+          SizedBox(height: 8), // Adds space between text and image
+         Container(
+          height: 267,
           width: 200,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage("https://picsum.photos/id/237/200/300"),
-              fit: BoxFit.cover,
+          child:Image.asset(
+            imagePath,
+            height: 267,
+            width: 200,
+            fit: BoxFit.cover,          
             ),
           ),
-        ),
-        SizedBox(height: 20), // Adds space between sections
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center, // Centers the row horizontally
-          children: [
-            Text(
-              'Price: \$20',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(width: 10), // Adds space between the text and button
-            ElevatedButton(
-              onPressed: () {
-                // Define button action
-                print('Buy button pressed!');
-              },
-              child: Text('Buy'),
-            ),
-          ],
-        ),
-      ],
+          SizedBox(height: 8),
+          Container(
+            padding: EdgeInsets.only(left: 8, right: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Space between price and button
+              children: [
+                Text(
+                  price.toString(),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Define button action
+                    print('Add to cart button pressed!');
+                  },
+                  child: Text('Add to cart'),
+                ),
+              ],
+            )
+          ) // Adds space between image and price/button row
+        ],
+      ),
     );
   }
 }
-
-
