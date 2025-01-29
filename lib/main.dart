@@ -78,10 +78,10 @@ class Home extends StatelessWidget {
                   ),
                   SizedBox(width: 16),
                   Book(
-                    title: 'Third Book',
+                    title: 'The Seven Moons of',
                     author: 'Another Author',
-                    imagePath: 'assets/Dessert Flower.png',
-                    price: 'Rs1000',
+                    imagePath: 'assets/45.jpg',
+                    price: 'Rs. 3000',
                   ),
                 ],
               ),
@@ -118,26 +118,30 @@ class Book extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center, // Centers the content vertically
         crossAxisAlignment: CrossAxisAlignment.center, // Aligns content horizontally
         children: [
-          Column(
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+           Container(
+            padding: EdgeInsets.only(left: 8, right: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                author,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
+                Text(
+                  author,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          SizedBox(height: 8), // Adds space between text and image
+        SizedBox(height: 8), // Adds space between text and image
          Container(
           height: 197,
           width: 148,
