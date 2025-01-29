@@ -11,18 +11,34 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Book World',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
+        title: Row(children:[
+          IconButton(
+                  onPressed: () {
+                    // Define button action
+                    print('Menu button pressed!');
+                  },                  
+                  icon: Icon(
+                    Icons.menu,
+                    size: 34,
+                    ),
+                ),
+           // Icon
+          SizedBox(width: 20), // Space between icon and text
+          Text(
+            'Book World',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        centerTitle: true,
+        ]),
+        //centerTitle: true,
         backgroundColor: Colors.red[900],
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 20, top: 20), // Adds padding
+        padding: EdgeInsets.only(left: 20, top: 20),
+        color: Colors.red[50], // Adds padding
+        width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,16 +71,16 @@ class Home extends StatelessWidget {
                   ),
                   SizedBox(width: 16), // Space between books
                   Book(
-                    title: 'Manika',
-                    author: 'Author Name',
-                    imagePath: 'assets/kanatare kusuma.jpg',
-                    price: 'infinity',
+                    title: 'Dessert Flower',
+                    author: 'Ranjith Kuruppu',
+                    imagePath: 'assets/Dessert Flower.png',
+                    price: 'Rs. 960',
                   ),
                   SizedBox(width: 16),
                   Book(
                     title: 'Third Book',
                     author: 'Another Author',
-                    imagePath: 'assets/sample2.jpg',
+                    imagePath: 'assets/Dessert Flower.png',
                     price: 'Rs1000',
                   ),
                 ],
@@ -93,10 +109,10 @@ class Book extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.lightBlue[50], // Background color for the widget
+        color: Colors.purple[400], // Background color for the widget
         borderRadius: BorderRadius.circular(8), // Rounded corners
       ),
-      width: 200,
+      width: 148,
       padding: EdgeInsets.only(top: 8, bottom: 8), // Padding for top and bottom
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center, // Centers the content vertically
@@ -107,28 +123,28 @@ class Book extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.red[900],
+                  fontSize: 14,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 author,
                 style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.red[900],
+                  fontSize: 12,
+                  color: Colors.white,
                 ),
               ),
             ],
           ),
           SizedBox(height: 8), // Adds space between text and image
          Container(
-          height: 267,
-          width: 200,
+          height: 197,
+          width: 148,
           child:Image.asset(
             imagePath,
-            height: 267,
-            width: 200,
+            //height: 267,
+            //width: 148,
             fit: BoxFit.cover,          
             ),
           ),
@@ -141,21 +157,19 @@ class Book extends StatelessWidget {
                 Text(
                   price.toString(),
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     color: Colors.black,
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Define button action
                     print('Add to cart button pressed!');
                   },
-                  child: Text(
-                    'Add to cart',
-                      style: TextStyle(
-                      fontSize: 14,
-                    )
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2), // Adjust padding
+                    textStyle: TextStyle(fontSize: 10), // Small font size
                   ),
+                  child: Text('Add to cart'),
                 ),
               ],
             )
